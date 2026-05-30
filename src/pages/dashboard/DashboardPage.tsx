@@ -13,19 +13,20 @@ function DashboardPage() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchNotes = async () => {
-    try {
-      const response = await api.get("/notes");
-
-      setNotes(response.data.notes);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await api.get("/note");
+        console.log(response.data);
+
+        setNotes(response.data.notes);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchNotes();
   }, []);
 
@@ -44,7 +45,7 @@ function DashboardPage() {
       <button
         onClick={() => {
           logout();
-          navigate("auth/login");
+          navigate("/auth/login");
         }}
       >
         Logout
