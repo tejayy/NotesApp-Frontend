@@ -12,7 +12,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     try {
@@ -28,7 +28,8 @@ function RegisterPage() {
 
       navigate("/login");
     } catch (error) {
-      toast.error("Registration Failed");
+      toast.error(error.response.data.message);
+      console.log(error);
     } finally {
       setLoading(false);
     }

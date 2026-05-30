@@ -14,7 +14,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     try {
@@ -27,6 +27,7 @@ function LoginPage() {
       navigate("/dashboard");
     } catch (error) {
       toast.error("Invalid Creds");
+      console.log(error);
     } finally {
       setLoading(false);
     }
