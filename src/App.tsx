@@ -1,9 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/auth/LoginPage";
+import RegisterPage from "./pages/auth/RegisterPage";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-black">App</h1>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={<h1 className="text-3xl font-bold underline">Notes App</h1>}
+      />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+    </Routes>
   );
 };
 
