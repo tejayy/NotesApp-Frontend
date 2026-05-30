@@ -10,7 +10,7 @@ function ProtectedRoute({ children }: Props) {
   const token = useAuthStore((state) => state.token);
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="auth/login" />;
   }
 
   return children;
