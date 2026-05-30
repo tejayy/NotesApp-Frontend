@@ -5,9 +5,8 @@ import api from "../../api/axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
-function RegisterPage() {
+function SignUpPage() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,8 +17,7 @@ function RegisterPage() {
     try {
       setLoading(true);
 
-      await api.post("/auth/register", {
-        name,
+      await api.post("/auth/signup", {
         email,
         password,
       });
@@ -41,13 +39,6 @@ function RegisterPage() {
         <h1 className="text-3xl font-bold mb-6">Register</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            placeholder="Name"
-            className="w-full p-3 rounded bg-slate-700"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
           <input
             placeholder="Email"
             className="w-full p-3 rounded bg-slate-700"
@@ -72,7 +63,7 @@ function RegisterPage() {
           </button>
           <p className="text-center mt-4">
             Already have an account?
-            <Link to="/login" className="text-blue-400 ml-2">
+            <Link to="/auth/login" className="text-blue-400 ml-2">
               Login
             </Link>
           </p>
@@ -82,4 +73,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default SignUpPage;

@@ -4,6 +4,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DashboardPage from "./pages/dashboard/DashboardPage";
+import SignUpPage from "./pages/auth/RegisterPage";
 
 const App = () => {
   return (
@@ -22,8 +23,8 @@ const App = () => {
           path="/"
           element={<h1 className="text-3xl font-bold underline">Notes App</h1>}
         />
-        <Route path="auth/login" element={<LoginPage />} />
-        <Route path="auth/signup" element={<RegisterPage />} />
+        <Route path="/auth/login" element={<LoginPage />} />
+        <Route path="/auth/signup" element={<SignUpPage />} />
       </Routes>
     </>
   );
